@@ -1,4 +1,4 @@
-scrapbook
+Matt's scrapbook
 =========
 
-Miscellaneous collection of odds and ends.
+A miscellaneous collection of odds and ends.
