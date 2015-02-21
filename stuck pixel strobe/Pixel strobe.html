@@ -1,0 +1,30 @@
+<html>
+<head>
+</head>
+<body style="background-color:black">
+<canvas id="myCanvas" width="20" height="20">
+</canvas>
+<button onClick="strobe('#FF0000')">red</button>
+<button onClick="strobe('#00FF00')">green</button>
+<button onClick="strobe('#0000FF')">blue</button>
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+var on = true;
+function flicker(color) {
+	if(on){
+		ctx.fillStyle = "#000000";
+		on = false;
+	}else{
+		ctx.fillStyle = color;
+		on = true;
+	}
+	ctx.fillRect(0,0,5,5);
+}
+function strobe(color){
+	clearInterval(window.myVar)
+	window.myVar=setInterval(function(){flicker(color)},1);
+}
+</script>
+</body>
+</html>
