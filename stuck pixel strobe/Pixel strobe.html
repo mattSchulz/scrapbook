@@ -76,10 +76,10 @@
 				}
 			}
 			function strobe(pigment){
-				clearInterval(window.myVar)
-				rate = document.getElementById("rate").value
+				clearInterval(window.myVar);
+				rate = document.getElementById("rate").value;
 				if(rate<0){
-					rate=100
+					rate=100;
 				}
 				window.myVar=setInterval(function(){flicker(pigment)},rate);
 			}
@@ -95,7 +95,7 @@
 			</ol>
 			<div id="divColor"></div>
 			<div id="inputDiv">
-				<label>refresh time: </label>
+				<label>refresh time (ms): </label>
 				<input id="rate" value="10"></input>
 			</div>
 			<div id="buttonsDiv">
