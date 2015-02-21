@@ -1,30 +1,107 @@
 <html>
-<head>
-</head>
-<body style="background-color:black">
-<canvas id="myCanvas" width="20" height="20">
-</canvas>
-<button onClick="strobe('#FF0000')">red</button>
-<button onClick="strobe('#00FF00')">green</button>
-<button onClick="strobe('#0000FF')">blue</button>
-<script>
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-var on = true;
-function flicker(color) {
-	if(on){
-		ctx.fillStyle = "#000000";
-		on = false;
-	}else{
-		ctx.fillStyle = color;
-		on = true;
-	}
-	ctx.fillRect(0,0,5,5);
-}
-function strobe(color){
-	clearInterval(window.myVar)
-	window.myVar=setInterval(function(){flicker(color)},1);
-}
-</script>
-</body>
+	<head>
+		<style>
+			body{
+				background-color:black;
+				font-family: helvetica;
+				font-weight: 100;
+				color:white;
+			}
+			#divColor{
+				width:5px;
+				height:5px;
+				background-color:black;
+				border:10px black solid;
+			}
+			#inputDiv{
+				margin-bottom:10px;
+			}
+			.red{
+				background-color: #FF0000;
+				border: 1px solid #FF0000;
+				text-shadow: 0px 1px 0px #FF0000;
+			}
+			.green{
+				background-color: #00FF00;
+				border: 1px solid #00FF00;
+				text-shadow: 0px 1px 0px #00FF00;
+			}
+			.blue{
+				background-color: #0000FF;
+				border: 1px solid #0000FF;
+				text-shadow: 0px 1px 0px #0000FF;
+			}
+			.myButton{
+				-moz-border-radius: 28px;
+				-webkit-border-radius: 28px;
+				border-radius: 10px;
+				border:2px solid #000000;
+				display: inline-block;
+				cursor: pointer;
+				color: #FFA500;
+				font-size: 16px;
+				width: 60;
+				text-decoration: none;
+			}
+			.myButton:hover {
+				border:2px solid #FFFFFF;
+			}
+			.myButton:active {
+				position:relative;
+				top:1px;
+			}
+			#hide{
+				display:none;
+				width:40em;
+			}
+		</style>
+		<script>
+			var goToBlack = true;
+			function legal()
+			{
+				if (confirm('There\'s a possibility that this could damage your display.\n\nBy using this, you agree not to hold me responsible for any damage that you may incur. Do you agree to these terms?')) {
+					document.getElementById("hide").style.display = "block";
+				}
+			}
+			function flicker(pigment) {
+				if(goToBlack){
+					document.getElementById("divColor").style.backgroundColor = "#000000";
+					goToBlack = false;
+				}else{
+					document.getElementById("divColor").style.backgroundColor = pigment;
+					goToBlack = true;
+				}
+			}
+			function strobe(pigment){
+				clearInterval(window.myVar)
+				rate = document.getElementById("rate").value
+				if(rate<0){
+					rate=100
+				}
+				window.myVar=setInterval(function(){flicker(pigment)},rate);
+			}
+		</script>
+	</head>
+	<body onload="window.setTimeout(legal, 500);" class="checker">
+		<div id="hide">
+			<p>By using this, you agree that I AM NOT RESPONSIBLE for any damage you may incur.</p>
+			<ol>
+				<li>Set a refresh time (lower is faster and more effective, "10" should work ok)</li>
+				<li>Then select the color that matches your problem pixel.</li>
+				<li>Position the little flickering square over the effected area on your screen.</li>
+			</ol>
+			<div id="divColor"></div>
+			<div id="inputDiv">
+				<label>refresh time: </label>
+				<input id="rate" value="10"></input>
+			</div>
+			<div id="buttonsDiv">
+				<button class="red myButton" onClick="strobe('#FF0000')">red</button>
+				<button class="green myButton" onClick="strobe('#00FF00')">green</button>
+				<button class="blue myButton" onClick="strobe('#0000FF')">blue</button>
+			</div>
+			<p>I'm a layperson regarding screen tech but I think this should work faster than <a href="http://jscreenfix.com">JScreenFix</a>.<br /><br />
+			Instead of trying to get the problem pixel to jump around randomly, this page focusses all efforts on just getting your problematic subpixel to switch on and off, over and over.</p>
+		</div>
+	</body>
 </html>
