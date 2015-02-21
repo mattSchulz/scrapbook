@@ -60,6 +60,7 @@
 		</style>
 		<script>
 			var goToBlack = true;
+			var cachePigment = "#000000";
 			function legal()
 			{
 				if (confirm('There\'s a possibility that this could damage your display.\n\nBy using this, you agree not to hold me responsible for any damage that you may incur. Do you agree to these terms?')) {
@@ -76,6 +77,7 @@
 				}
 			}
 			function strobe(pigment){
+				cachePigment = pigment;
 				clearInterval(window.myVar);
 				rate = document.getElementById("rate").value;
 				if(rate<0){
@@ -83,6 +85,9 @@
 				}
 				window.myVar=setInterval(function(){flicker(pigment)},rate);
 			}
+			window.addEventListener('input',function(){
+				strobe(cachePigment);
+			}, false);
 		</script>
 	</head>
 	<body onload="window.setTimeout(legal, 500);" class="checker">
