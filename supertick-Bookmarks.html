@@ -9,6 +9,8 @@ a{color:grey;}
 <div>
 
 To install, drag and drop these SuperTICK-Check bookmarks to your bookmarks bar:
+<br>
+<br>
 <h4>​Manage list of entries that are being processed:</h4>
 <h3><a class="bookmarklet" href="javascript:(function()%7B%24(%22%23mandatoryFieldsMessage%22).before(%22%3Ch3%3EInput%3A%3C%2Fh3%3E%3Ctextarea%20id%3D'csvInput'%20class%3D'temphack'%20rows%3D'6'%20cols%3D'100'%3E%3C%2Ftextarea%3E%3Cbr%2F%3E%3Cbutton%20id%3D'csvIn'%20class%3D'temphack'%20type%3D'button'%20onclick%3D'superTickEntries%3D%24(%5C%22%23csvInput%5C%22).val().split(%5C%22%5C%5Cn%5C%22)%3Bfor(x%3D0%3Bx%3CsuperTickEntries.length%3Bx%2B%2B)%7BsuperTickEntries%5Bx%5D%3DsuperTickEntries%5Bx%5D.split(%5C%22%2C%5C%22)%7Dif(localStorage.getItem(%5C%22superTickStorage%5C%22)%3D%3D%3Dnull)%7BlistArray%3DsuperTickEntries%7Delse%7BlistArray%3DjQuery.parseJSON(localStorage.getItem(%5C%22superTickStorage%5C%22))%3BlistArray%3DlistArray.concat(superTickEntries)%7DlocalStorage.setItem(%5C%22superTickStorage%5C%22%2CJSON.stringify(listArray))%3Balert(%5C%22successfully%20added%20to%20the%20queue%5C%22)%3B%24(%5C%22.temphack%2C%20%23mandatoryFieldsMessage%20%3E%20h3%2C%20%23SuperTickCheckAction%20%3E%20h3%5C%22).remove()%3B'%3Eadd%20to%20queue%3C%2Fbutton%3E%3Cbr%20class%3D'temphack'%2F%3E%3Cbr%20class%3D'temphack'%2F%3E%22)%3Bfunction%20storeDataToCSV()%7BstoredData%20%3D%20jQuery.parseJSON(localStorage.getItem(%22superTickStorage%22))%3Bif(!(storedData%3D%3D%3Dnull))%7Bfor(j%3D0%3Bj%3CstoredData.length%3Bj%2B%2B)%7BstoredData%5Bj%5D%20%3D%20storedData%5Bj%5D.join(%22%2C%22)%7D%3Breturn%20storedData.join(%22%5Cn%22)%3B%7Delse%7Breturn%20%22%22%3B%7D%7D%24(%22%23mandatoryFieldsMessage%22).prepend(%22%3Ch3%3ECurrently%20in%20memory%3A%3C%2Fh3%3E%3Ctextarea%20id%3D'csvOutput'%20class%3D'temphack'%20rows%3D'12'%20cols%3D'100'%3E%22%2BstoreDataToCSV()%2B%22%3C%2Ftextarea%3E%3Cbr%2F%3E%3Cbutton%20'csvOut'%20class%3D'temphack'%20type%3D'button'%20onclick%3D'localStorage.clear()%3B%24(%5C%22%23csvOutput%5C%22).val(%5C%22%5C%22)%3B'%3Edelete%20all%20from%20memory%3C%2Fbutton%3E%3Cbr%20class%3D'temphack'%2F%3E%3Cbr%20class%3D'temphack'%2F%3E%22)%7D)()">Manage-SuperTick</a></h3>
 
@@ -18,10 +20,13 @@ To install, drag and drop these SuperTICK-Check bookmarks to your bookmarks bar:
 <br/><br/>
 <br/><br/>
 <br/><br/>
-
-SuperTick check URL should end with /SuperTickCheckView,
-results page should end with /SuperTickResultView
-
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<div style="font-size:0.8em">
+SuperTick check URL should end with "/SuperTickCheckView",<br>
+results page should end with "/SuperTickResultView"
+</div>
 </div>
 </body>
 </html>
